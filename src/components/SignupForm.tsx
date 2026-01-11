@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+import { Send, CheckCircle, AlertCircle, Loader2, Bell, Users, Award } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 
 const interestOptions = [
@@ -10,6 +10,24 @@ const interestOptions = [
   { value: 'Adult ADHD', label: 'Adult ADHD Assessment' },
   { value: 'Post-Diagnostic Support', label: 'Post-Diagnostic Support' },
   { value: 'General Enquiry', label: 'General Enquiry' },
+];
+
+const benefits = [
+  {
+    icon: Bell,
+    title: 'Be First to Know',
+    description: 'Receive priority notification the moment we launch',
+  },
+  {
+    icon: Users,
+    title: 'Zero Waiting List',
+    description: 'As a new service, early registrants skip the queue',
+  },
+  {
+    icon: Award,
+    title: 'Expert Care',
+    description: 'Our team has 10+ years NHS autism pathway experience',
+  },
 ];
 
 export default function SignupForm() {
@@ -49,26 +67,51 @@ export default function SignupForm() {
 
   return (
     <section id="signup" className="py-24 bg-gradient-to-b from-slate-50 to-blue-50">
-      <div className="max-w-2xl mx-auto px-6">
+      <div className="max-w-4xl mx-auto px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
             Register Your Interest
           </h2>
-          <p className="text-lg text-slate-600">
-            Be the first to know when we launch. Sign up to receive updates and priority booking.
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-6">
+            Be the first to know when we launch. Register now to receive priority booking
+            and take advantage of zero waiting times as our founding clients.
           </p>
+          <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 max-w-2xl mx-auto">
+            <p className="text-blue-800 text-sm">
+              You're in experienced hands. Our core team and directors have over 10 years of direct
+              experience working in child autism pathways within the NHS, bringing clinical expertise
+              and compassionate care to every assessment.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-4 mb-10">
+          {benefits.map((benefit, index) => (
+            <div key={index} className="bg-white rounded-xl p-5 text-center shadow-sm">
+              <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-3">
+                <benefit.icon className="w-6 h-6 text-blue-600" />
+              </div>
+              <h3 className="font-semibold text-slate-900 mb-1">{benefit.title}</h3>
+              <p className="text-sm text-slate-600">{benefit.description}</p>
+            </div>
+          ))}
         </div>
 
         {status === 'success' ? (
-          <div className="bg-white rounded-2xl p-8 shadow-sm text-center">
+          <div className="bg-white rounded-2xl p-8 shadow-sm text-center max-w-2xl mx-auto">
             <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle className="w-8 h-8 text-emerald-600" />
             </div>
             <h3 className="text-2xl font-semibold text-slate-900 mb-2">
-              Thank You!
+              You're on the List!
             </h3>
-            <p className="text-slate-600 mb-6">
-              We've received your registration. We'll be in touch soon with updates about our launch.
+            <p className="text-slate-600 mb-4">
+              Thank you for registering your interest. We'll notify you as soon as we launch
+              in Spring 2026, and you'll be among the first to book an assessment.
+            </p>
+            <p className="text-sm text-slate-500 mb-6">
+              As a new service with zero waiting list, registering now gives you the best chance
+              of securing your preferred appointment time.
             </p>
             <button
               onClick={() => setStatus('idle')}
@@ -78,7 +121,7 @@ export default function SignupForm() {
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-sm">
+          <form onSubmit={handleSubmit} className="bg-white rounded-2xl p-8 shadow-sm max-w-2xl mx-auto">
             <div className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">

@@ -12,9 +12,14 @@ export default function Header() {
           <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
             <Sparkles className="w-6 h-6 text-white" />
           </div>
-          <span className="text-xl font-semibold text-slate-800">
-            The Neurodiversity Service
-          </span>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3">
+            <span className="text-xl font-semibold text-slate-800">
+              The Neurodiversity Service
+            </span>
+            <span className="text-xs sm:text-sm text-amber-600 font-medium">
+              Launching Spring 2026
+            </span>
+          </div>
         </div>
         <button
           onClick={scrollToContact}
