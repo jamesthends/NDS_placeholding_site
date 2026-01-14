@@ -17,7 +17,7 @@ export default function Admin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
-  const ADMIN_PASSWORD = 'admin123';
+  const ADMIN_PASSWORD = 'kyhwa4-W4xkuq';
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
@@ -102,7 +102,7 @@ export default function Admin() {
           </form>
 
           <p className="text-sm text-gray-500 mt-6 text-center">
-            Default password: <code className="bg-gray-100 px-2 py-1 rounded">admin123</code>
+            Contact your administrator if you need access
           </p>
         </div>
       </div>
